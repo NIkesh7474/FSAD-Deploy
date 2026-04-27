@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { AppContext } from './AppContext'
 
+// Configure API base URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || ''
+const apiClient = axios.create({
+    baseURL: API_BASE_URL
+})
+
 export function AppProvider({ children }) {
     const [homestays, setHomestays] = useState([])
     const [touristPlaces, setTouristPlaces] = useState([])
@@ -18,10 +24,10 @@ export function AppProvider({ children }) {
         const fetchData = async () => {
             try {
                 const [homestaysRes, touristPlacesRes, guidesRes, usersRes] = await Promise.all([
-                    axios.get('/api/homestays'),
-                    axios.get('/api/tourist-places'),
-                    axios.get('/api/guides'),
-                    axios.get('/api/users')
+                    apiClient.get('/api/homestays'),
+                    apiClient.get('/api/tourist-places'),
+                    apiClient.get('/api/guides'),
+                    apiClient.get('/api/users')
                 ])
 
                 setHomestays(homestaysRes.data)
@@ -86,7 +92,7 @@ export function AppProvider({ children }) {
 
     const registerUser = async (userData) => {
         try {
-            const response = await axios.post('/api/auth/register', userData)
+            const response = await apiClient.post('/api/auth/register', userData)
             const data = response.data
             if (data.success) {
                 setUsers([...users, data.user])
@@ -102,7 +108,7 @@ export function AppProvider({ children }) {
 
     const loginUser = async (identifier, password) => {
         try {
-            const response = await axios.post('/api/auth/login', { identifier, password })
+            const response = await apiClient.post('/api/auth/login', { identifier, password })
             const data = response.data
             if (data.success) {
                 setCurrentUser(data.user)
@@ -127,7 +133,7 @@ export function AppProvider({ children }) {
 
     const removeUser = async (id) => {
         try {
-            const response = await axios.delete(`/api/users/${id}`)
+            const response = await apiClient.delete(`/api/users/${id}`)
             if (response.data.success) {
                 setUsers(prev => prev.filter(u => u.id !== id))
                 return true
@@ -141,7 +147,7 @@ export function AppProvider({ children }) {
 
     const updateUserRole = async (id, role) => {
         try {
-            const response = await axios.put(`/api/users/${id}/role`, { role })
+            const response = await apiClient.put(`/api/users/${id}/role`, { role })
             if (response.data.success) {
                 setUsers(prev => prev.map(u => u.id === id ? response.data.user : u))
                 return true
@@ -159,7 +165,7 @@ export function AppProvider({ children }) {
             return null
         }
         try {
-            const response = await axios.post('/api/bookings', { userId: currentUser.id, itemId, type, amount })
+            const response = await apiClient.post('/api/bookings', { userId: currentUser.id, itemId, type, amount })
             const data = response.data
             if (data.success) {
                 setBookings([...bookings, data.booking])
@@ -190,7 +196,7 @@ export function AppProvider({ children }) {
 
     const createHomestay = async (homestayData) => {
         try {
-            const response = await axios.post('/api/homestays', homestayData)
+            const response = await apiClient.post('/api/homestays', homestayData)
             if (response.data.success) {
                 setHomestays(prev => [...prev, response.data.homestay])
                 return true
@@ -204,7 +210,7 @@ export function AppProvider({ children }) {
 
     const updateHomestay = async (id, updates) => {
         try {
-            const response = await axios.put(`/api/homestays/${id}`, updates)
+            const response = await apiClient.put(`/api/homestays/${id}`, updates)
             if (response.data.success) {
                 setHomestays(prev => prev.map(h => h.id === id ? response.data.homestay : h))
                 return true
@@ -218,7 +224,7 @@ export function AppProvider({ children }) {
 
     const deleteHomestay = async (id) => {
         try {
-            const response = await axios.delete(`/api/homestays/${id}`)
+            const response = await apiClient.delete(`/api/homestays/${id}`)
             if (response.data.success) {
                 setHomestays(prev => prev.filter(h => h.id !== id))
                 return true
@@ -232,7 +238,7 @@ export function AppProvider({ children }) {
 
     const createTouristPlace = async (placeData) => {
         try {
-            const response = await axios.post('/api/tourist-places', placeData)
+            const response = await apiClient.post('/api/tourist-places', placeData)
             if (response.data.success) {
                 setTouristPlaces(prev => [...prev, response.data.touristPlace])
                 return true
@@ -246,7 +252,7 @@ export function AppProvider({ children }) {
 
     const updateTouristPlace = async (id, updates) => {
         try {
-            const response = await axios.put(`/api/tourist-places/${id}`, updates)
+            const response = await apiClient.put(`/api/tourist-places/${id}`, updates)
             if (response.data.success) {
                 setTouristPlaces(prev => prev.map(t => t.id === id ? response.data.touristPlace : t))
                 return true
@@ -260,7 +266,7 @@ export function AppProvider({ children }) {
 
     const deleteTouristPlace = async (id) => {
         try {
-            const response = await axios.delete(`/api/tourist-places/${id}`)
+            const response = await apiClient.delete(`/api/tourist-places/${id}`)
             if (response.data.success) {
                 setTouristPlaces(prev => prev.filter(t => t.id !== id))
                 return true
@@ -274,7 +280,7 @@ export function AppProvider({ children }) {
 
     const createGuide = async (guideData) => {
         try {
-            const response = await axios.post('/api/guides', guideData)
+            const response = await apiClient.post('/api/guides', guideData)
             if (response.data.success) {
                 setGuides(prev => [...prev, response.data.guide])
                 return true
