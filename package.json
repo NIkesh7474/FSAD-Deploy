@@ -1,0 +1,16 @@
+{
+  "name": "tourism-antigravity-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install-all": "cd FSAD-Project-main && npm ci",
+    "build": "cd FSAD-Project-main && npm run build",
+    "start": "cd FSAD-Project-main && npm start",
+    "dev": "cd FSAD-Project-main && npm run dev",
+    "lint": "cd FSAD-Project-main && npm run lint"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
