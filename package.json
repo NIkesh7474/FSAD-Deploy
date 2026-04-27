@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "install-all": "cd FSAD-Project-main && npm ci",
+    "postinstall": "cd FSAD-Project-main && npm install",
+    "install-all": "cd FSAD-Project-main && npm install",
     "build": "cd FSAD-Project-main && npm run build",
     "start": "cd FSAD-Project-main && npm start",
     "dev": "cd FSAD-Project-main && npm run dev",
