@@ -8,7 +8,7 @@ export default function Auth() {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        name: '', email: '', password: '', phone: '', role: 'user'
+        name: '', email: '', password: '', phone: '', identifier: '', role: 'user'
     });
 
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,11 +16,11 @@ export default function Auth() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isLogin) {
-            const success = await loginUser(formData.email, formData.password);
+            const success = await loginUser(formData.identifier, formData.password);
             if (success) {
                 navigate('/');
             } else {
-                alert('Invalid email or password.');
+                alert('Invalid username/email or password.');
             }
         } else {
             await registerUser({ name: formData.name, email: formData.email, password: formData.password, phone: formData.phone, role: formData.role });
@@ -36,40 +36,40 @@ export default function Auth() {
 
     return (
         <div className="container" style={{ padding: '6rem 1.5rem', display: 'flex', justifyContent: 'center' }}>
-            <div style={{ background: 'white', padding: '3rem', borderRadius: '1rem', boxShadow: 'var(--shadow-lg)', width: '100%', maxWidth: '450px', border: '1px solid #e5e7eb' }}>
+            <div className="auth-card" style={{ padding: '3rem', width: '100%', maxWidth: '480px' }}>
                 <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem', fontWeight: 800 }}>{isLogin ? 'Sign In' : 'Sign Up'}</h2>
 
                 <form style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }} onSubmit={handleSubmit}>
                     {!isLogin && (
                         <>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <label style={{ fontWeight: 600 }}>I am joining as a...</label>
-                                <select name="role" value={formData.role} onChange={handleChange} style={{ padding: '0.875rem', borderRadius: '0.5rem', border: '1px solid #d1d5db', outline: 'none', background: 'white', fontSize: '1rem' }}>
+                            <div className="form-group">
+                                <label>I am joining as a...</label>
+                                <select name="role" value={formData.role} onChange={handleChange} className="input-field">
                                     <option value="user">Regular User (Tourist)</option>
                                     <option value="guide">Local Tour Guide</option>
                                     <option value="admin">Platform Admin</option>
                                 </select>
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <label style={{ fontWeight: 600 }}>Name</label>
-                                <input required name="name" type="text" placeholder="Your Full Name" value={formData.name} onChange={handleChange} style={{ padding: '0.875rem', borderRadius: '0.5rem', border: '1px solid #d1d5db', outline: 'none' }} />
+                            <div className="form-group">
+                                <label>Username</label>
+                                <input required name="name" type="text" placeholder="Your Username" value={formData.name} onChange={handleChange} className="input-field" />
                             </div>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <label style={{ fontWeight: 600 }}>Phone Number</label>
-                                <input required name="phone" type="tel" placeholder="+91 12345 67890" value={formData.phone} onChange={handleChange} style={{ padding: '0.875rem', borderRadius: '0.5rem', border: '1px solid #d1d5db', outline: 'none' }} />
+                            <div className="form-group">
+                                <label>Phone Number</label>
+                                <input required name="phone" type="tel" placeholder="+91 12345 67890" value={formData.phone} onChange={handleChange} className="input-field" />
                             </div>
                         </>
                     )}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <label style={{ fontWeight: 600 }}>Email Address</label>
-                        <input required name="email" type="email" placeholder="you@example.com" value={formData.email} onChange={handleChange} style={{ padding: '0.875rem', borderRadius: '0.5rem', border: '1px solid #d1d5db', outline: 'none' }} />
+                    <div className="form-group">
+                        <label>{isLogin ? 'Email or Username' : 'Email Address'}</label>
+                        <input required name={isLogin ? 'identifier' : 'email'} type={isLogin ? 'text' : 'email'} placeholder={isLogin ? 'Enter email or username' : 'you@example.com'} value={isLogin ? formData.identifier : formData.email} onChange={handleChange} className="input-field" />
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <label style={{ fontWeight: 600 }}>Password</label>
-                        <input required name="password" type="password" placeholder="••••••••" value={formData.password} onChange={handleChange} style={{ padding: '0.875rem', borderRadius: '0.5rem', border: '1px solid #d1d5db', outline: 'none' }} />
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input required name="password" type="password" placeholder="••••••••" value={formData.password} onChange={handleChange} className="input-field" />
                     </div>
 
-                    <button type="submit" className="btn btn-primary" style={{ padding: '1rem', marginTop: '1rem', fontSize: '1.125rem' }}>
+                    <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem', fontSize: '1.05rem' }}>
                         {isLogin ? 'Login to Portal' : 'Create Account'}
                     </button>
                 </form>

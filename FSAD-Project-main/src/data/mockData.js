@@ -1,24 +1,414 @@
 export const mockData = {
     homestays: [
-        { id: 1, name: "Sunset Villa", description: "Beautiful view of the valley with high-speed internet.", lat: 34.0522, lng: -118.2437, amount: 4500, rooms: 2, category: "double bedroom", location: "Los Angeles" },
-        { id: 2, name: "Cozy Cabin", description: "In the woods, perfect for a retreat.", lat: 40.7128, lng: -74.0060, amount: 2500, rooms: 1, category: "single bedroom", location: "New York" },
-        { id: 3, name: "Eiffel Dream", description: "See the tower from your window.", lat: 48.8584, lng: 2.2945, amount: 4800, rooms: 3, category: "triple bedroom", location: "Paris" },
-        { id: 4, name: "Montmartre Artist Studio", description: "A creative vibe in the heart of Paris.", lat: 48.8867, lng: 2.3431, amount: 3200, rooms: 1, category: "single bedroom", location: "Paris" },
-        { id: 5, name: "Marine Drive Sea View", description: "Wake up to the sound of waves in Mumbai.", lat: 18.944, lng: 72.823, amount: 3500, rooms: 2, category: "double bedroom", location: "Mumbai" },
-        { id: 6, name: "Bandra Heritage Home", description: "Experience classic Mumbai lifestyle.", lat: 19.0596, lng: 72.8295, amount: 2800, rooms: 1, category: "single bedroom", location: "Mumbai" },
-        { id: 7, name: "Marina Beach Retreat", description: "Walking distance from the spectacular Marina Beach.", lat: 13.05, lng: 80.2824, amount: 2100, rooms: 2, category: "double bedroom", location: "Chennai" },
-        { id: 8, name: "Mylapore Traditional Stay", description: "Immerse in the heritage of Chennai.", lat: 13.0368, lng: 80.2676, amount: 1900, rooms: 3, category: "triple bedroom", location: "Chennai" }
+        { id: 1, name: "Sunset Villa", description: "Beautiful view of the valley with high-speed internet.", lat: 34.0010, lng: -118.1990, amount: 2000, rooms: 2, category: "double bedroom", location: "Los Angeles" },
+        { id: 2, name: "Hollywood Hills Retreat", description: "Stylish home near the Hollywood Bowl.", lat: 34.0020, lng: -118.1980, amount: 2200, rooms: 3, category: "triple bedroom", location: "Los Angeles" },
+        { id: 3, name: "Venice Beach Loft", description: "Modern loft steps from the beach.", lat: 34.0030, lng: -118.1970, amount: 2400, rooms: 1, category: "single bedroom", location: "Los Angeles" },
+        { id: 4, name: "Beverly Hills Oasis", description: "Luxury suite with private garden.", lat: 34.0040, lng: -118.1960, amount: 2600, rooms: 2, category: "double bedroom", location: "Los Angeles" },
+        { id: 5, name: "Downtown Sky Suite", description: "City view and rooftop access.", lat: 34.0050, lng: -118.1950, amount: 2800, rooms: 3, category: "triple bedroom", location: "Los Angeles" },
+        { id: 6, name: "Westside Coastal Home", description: "Bright house minutes from the coast.", lat: 34.0060, lng: -118.1940, amount: 3000, rooms: 1, category: "single bedroom", location: "Los Angeles" },
+        { id: 7, name: "Studio City Bungalow", description: "Quiet bungalow near studios.", lat: 34.0070, lng: -118.1930, amount: 3200, rooms: 2, category: "double bedroom", location: "Los Angeles" },
+        { id: 8, name: "Canyon View Residence", description: "Private home with canyon views.", lat: 34.0080, lng: -118.1920, amount: 3400, rooms: 3, category: "triple bedroom", location: "Los Angeles" },
+        { id: 9, name: "Santa Monica Hideaway", description: "Chic apartment close to Pier.", lat: 34.0090, lng: -118.1910, amount: 3600, rooms: 1, category: "single bedroom", location: "Los Angeles" },
+        { id: 10, name: "Malibu Sunrise Villa", description: "Ocean-view villa with sunrise views.", lat: 34.0100, lng: -118.1900, amount: 3800, rooms: 2, category: "double bedroom", location: "Los Angeles" },
+        { id: 11, name: "Central Park Condo", description: "Comfortable Condo steps from Central Park.", lat: 40.7010, lng: -73.9990, amount: 2000, rooms: 2, category: "double bedroom", location: "New York" },
+        { id: 12, name: "Brooklyn Brownstone", description: "Historic home in trendy Brooklyn.", lat: 40.7020, lng: -73.9980, amount: 2200, rooms: 3, category: "triple bedroom", location: "New York" },
+        { id: 13, name: "SoHo Artist Loft", description: "Spacious loft in SoHo.", lat: 40.7030, lng: -73.9970, amount: 2400, rooms: 1, category: "single bedroom", location: "New York" },
+        { id: 14, name: "Times Square Studio", description: "Bright studio in the heart of Manhattan.", lat: 40.7040, lng: -73.9960, amount: 2600, rooms: 2, category: "double bedroom", location: "New York" },
+        { id: 15, name: "Hudson River Retreat", description: "Riverside apartment with skyline views.", lat: 40.7050, lng: -73.9950, amount: 2800, rooms: 3, category: "triple bedroom", location: "New York" },
+        { id: 16, name: "Chelsea Terrace Home", description: "Elegant home close to galleries.", lat: 40.7060, lng: -73.9940, amount: 3000, rooms: 1, category: "single bedroom", location: "New York" },
+        { id: 17, name: "Upper East Side Suite", description: "Luxury suite near museums.", lat: 40.7070, lng: -73.9930, amount: 3200, rooms: 2, category: "double bedroom", location: "New York" },
+        { id: 18, name: "Greenwich Village Flat", description: "Cozy apartment in the Village.", lat: 40.7080, lng: -73.9920, amount: 3400, rooms: 3, category: "triple bedroom", location: "New York" },
+        { id: 19, name: "Tribeca Townhouse", description: "Stylish townhouse with private patio.", lat: 40.7090, lng: -73.9910, amount: 3600, rooms: 1, category: "single bedroom", location: "New York" },
+        { id: 20, name: "Battery Park View", description: "Waterfront apartment near the Statue of Liberty.", lat: 40.7100, lng: -73.9900, amount: 3800, rooms: 2, category: "double bedroom", location: "New York" },
+        { id: 21, name: "Eiffel Dream", description: "See the tower from your window.", lat: 48.8510, lng: 2.3410, amount: 2000, rooms: 2, category: "double bedroom", location: "Paris" },
+        { id: 22, name: "Montmartre Artist Studio", description: "A creative vibe in the heart of Paris.", lat: 48.8520, lng: 2.3420, amount: 2200, rooms: 3, category: "triple bedroom", location: "Paris" },
+        { id: 23, name: "Seine Riverside Apartment", description: "Elegant apartment by the river.", lat: 48.8530, lng: 2.3430, amount: 2400, rooms: 1, category: "single bedroom", location: "Paris" },
+        { id: 24, name: "Louvre View Flat", description: "Classic Parisian flat near museums.", lat: 48.8540, lng: 2.3440, amount: 2600, rooms: 2, category: "double bedroom", location: "Paris" },
+        { id: 25, name: "Latin Quarter Loft", description: "Charming loft in the Latin Quarter.", lat: 48.8550, lng: 2.3450, amount: 2800, rooms: 3, category: "triple bedroom", location: "Paris" },
+        { id: 26, name: "Champs-Élysées Suite", description: "Upscale suite near the Champs-Élysées.", lat: 48.8560, lng: 2.3460, amount: 3000, rooms: 1, category: "single bedroom", location: "Paris" },
+        { id: 27, name: "Saint-Germain Retreat", description: "Cozy space in Saint-Germain-des-Prés.", lat: 48.8570, lng: 2.3470, amount: 3200, rooms: 2, category: "double bedroom", location: "Paris" },
+        { id: 28, name: "Notre-Dame Studio", description: "Historic area studio near the cathedral.", lat: 48.8580, lng: 2.3480, amount: 3400, rooms: 3, category: "triple bedroom", location: "Paris" },
+        { id: 29, name: "Le Marais Hideaway", description: "Stylish flat in Le Marais.", lat: 48.8590, lng: 2.3490, amount: 3600, rooms: 1, category: "single bedroom", location: "Paris" },
+        { id: 30, name: "Palais-Royal Residence", description: "Quiet apartment near Palais-Royal.", lat: 48.8600, lng: 2.3500, amount: 3800, rooms: 2, category: "double bedroom", location: "Paris" },
+        { id: 31, name: "Marine Drive Sea View", description: "Wake up to the sound of waves in Mumbai.", lat: 19.0710, lng: 72.8810, amount: 2000, rooms: 2, category: "double bedroom", location: "Mumbai" },
+        { id: 32, name: "Bandra Heritage Home", description: "Experience classic Mumbai lifestyle.", lat: 19.0720, lng: 72.8820, amount: 2200, rooms: 3, category: "triple bedroom", location: "Mumbai" },
+        { id: 33, name: "Colaba Colonial House", description: "Historic house close to the Gateway of India.", lat: 19.0730, lng: 72.8830, amount: 2400, rooms: 1, category: "single bedroom", location: "Mumbai" },
+        { id: 34, name: "Juhu Beach Apartment", description: "Beachfront stay near Juhu Beach.", lat: 19.0740, lng: 72.8840, amount: 2600, rooms: 2, category: "double bedroom", location: "Mumbai" },
+        { id: 35, name: "Powai Lake Villa", description: "Modern villa overlooking Powai Lake.", lat: 19.0750, lng: 72.8850, amount: 2800, rooms: 3, category: "triple bedroom", location: "Mumbai" },
+        { id: 36, name: "Andheri Garden Flat", description: "Calm apartment near the airport.", lat: 19.0760, lng: 72.8860, amount: 3000, rooms: 1, category: "single bedroom", location: "Mumbai" },
+        { id: 37, name: "Lower Parel Penthouse", description: "Luxury penthouse in the business district.", lat: 19.0770, lng: 72.8870, amount: 3200, rooms: 2, category: "double bedroom", location: "Mumbai" },
+        { id: 38, name: "Versova Beach Cottage", description: "Sea-facing cottage in Versova.", lat: 19.0780, lng: 72.8880, amount: 3400, rooms: 3, category: "triple bedroom", location: "Mumbai" },
+        { id: 39, name: "Malabar Hill Residence", description: "Elegant home with city views.", lat: 19.0790, lng: 72.8890, amount: 3600, rooms: 1, category: "single bedroom", location: "Mumbai" },
+        { id: 40, name: "Carter Road Retreat", description: "Contemporary flat by the promenade.", lat: 19.0800, lng: 72.8900, amount: 3800, rooms: 2, category: "double bedroom", location: "Mumbai" },
+        { id: 41, name: "Marina Beach Retreat", description: "Walking distance from the spectacular Marina Beach.", lat: 13.0810, lng: 80.2710, amount: 2000, rooms: 2, category: "double bedroom", location: "Chennai" },
+        { id: 42, name: "Mylapore Traditional Stay", description: "Immerse in the heritage of Chennai.", lat: 13.0820, lng: 80.2720, amount: 2200, rooms: 3, category: "triple bedroom", location: "Chennai" },
+        { id: 43, name: "Besant Nagar Bungalow", description: "Spacious home near the bay.", lat: 13.0830, lng: 80.2730, amount: 2400, rooms: 1, category: "single bedroom", location: "Chennai" },
+        { id: 44, name: "Egmore Heritage Flat", description: "Heritage apartment in a historic neighbourhood.", lat: 13.0840, lng: 80.2740, amount: 2600, rooms: 2, category: "double bedroom", location: "Chennai" },
+        { id: 45, name: "T Nagar Family House", description: "Comfortable family-friendly stay.", lat: 13.0850, lng: 80.2750, amount: 2800, rooms: 3, category: "triple bedroom", location: "Chennai" },
+        { id: 46, name: "Anna Nagar Garden Home", description: "Peaceful home with garden access.", lat: 13.0860, lng: 80.2760, amount: 3000, rooms: 1, category: "single bedroom", location: "Chennai" },
+        { id: 47, name: "Velachery Modern Studio", description: "Contemporary studio near malls.", lat: 13.0870, lng: 80.2770, amount: 3200, rooms: 2, category: "double bedroom", location: "Chennai" },
+        { id: 48, name: "Adyar Riverside Residence", description: "Riverside home by the Adyar.", lat: 13.0880, lng: 80.2780, amount: 3400, rooms: 3, category: "triple bedroom", location: "Chennai" },
+        { id: 49, name: "Kodaikanal Hills Apartment", description: "Cool hillside apartment inside Chennai.", lat: 13.0890, lng: 80.2790, amount: 3600, rooms: 1, category: "single bedroom", location: "Chennai" },
+        { id: 50, name: "Mahabalipuram Coastal Villa", description: "Coastal villa with temple views.", lat: 13.0900, lng: 80.2800, amount: 3800, rooms: 2, category: "double bedroom", location: "Chennai" },
+        ...(() => {
+            const cities = [
+                {
+                    city: 'Delhi',
+                    lat: 28.6139,
+                    lng: 77.2090,
+                    names: [
+                        'Connaught Place Heritage Home',
+                        'Lodhi Gardens Bungalow',
+                        'Hauz Khas Studio',
+                        'Chandni Chowk Guesthouse',
+                        'Karol Bagh Family Home',
+                        'South Delhi Villa',
+                        'Gurgaon Business Suite',
+                        'Noida Garden Flat',
+                        'Rajouri Garden Residence',
+                        'Civil Lines Apartment'
+                    ]
+                },
+                {
+                    city: 'Bangalore',
+                    lat: 12.9716,
+                    lng: 77.5946,
+                    names: [
+                        'MG Road Terrace',
+                        'Koramangala Suite',
+                        'Indiranagar Loft',
+                        'Whitefield Cottage',
+                        'Jayanagar Home',
+                        'Brigade Road Studio',
+                        'Electronic City Villa',
+                        'Bannerghatta Stay',
+                        'Ulsoor Riverside Flat',
+                        'Cubbon Park Residence'
+                    ]
+                },
+                {
+                    city: 'Kolkata',
+                    lat: 22.5726,
+                    lng: 88.3639,
+                    names: [
+                        'Park Street Apartment',
+                        'Salt Lake Residency',
+                        'Victoria Memorial Home',
+                        'Ballygunge House',
+                        'Shyambazar Studio',
+                        'Rashbehari Guesthouse',
+                        'South City Flat',
+                        'Gariahat Residence',
+                        'Howrah River View',
+                        'New Market Loft'
+                    ]
+                },
+                {
+                    city: 'Hyderabad',
+                    lat: 17.3850,
+                    lng: 78.4867,
+                    names: [
+                        'Banjara Hills Villa',
+                        'Charminar Heritage Stay',
+                        'Gachibowli Studio',
+                        'Hitech City Apartment',
+                        'Jubilee Hills Residence',
+                        'Secunderabad Flat',
+                        'Tank Bund Cottage',
+                        'Hussain Sagar Home',
+                        'Mehdipatnam Guesthouse',
+                        'KBR Park Residence'
+                    ]
+                },
+                {
+                    city: 'Jaipur',
+                    lat: 26.9124,
+                    lng: 75.7873,
+                    names: [
+                        'Pink City Heritage Home',
+                        'Jal Mahal Villa',
+                        'Hawa Mahal Studio',
+                        'Amer Fort Bungalow',
+                        'Bani Park Apartment',
+                        'C-Scheme Residence',
+                        'Mansarovar Cottage',
+                        'Shahpura Studio',
+                        'Vaishali Nagar Flat',
+                        'Gopalbari House'
+                    ]
+                },
+                {
+                    city: 'Ahmedabad',
+                    lat: 23.0225,
+                    lng: 72.5714,
+                    names: [
+                        'Old City Haveli',
+                        'CG Road Home',
+                        'Law Garden Apartment',
+                        'Navrangpura Flat',
+                        'Satellite Road Villa',
+                        'Vastrapur Residence',
+                        'Maninagar Guesthouse',
+                        'Gandhinagar Studio',
+                        'Naranpura Cottage',
+                        'Prahlad Nagar Suite'
+                    ]
+                },
+                {
+                    city: 'Pune',
+                    lat: 18.5204,
+                    lng: 73.8567,
+                    names: [
+                        'Koregaon Park Studio',
+                        'Viman Nagar Flat',
+                        'FC Road Apartment',
+                        'Shivajinagar Home',
+                        'Baner Villa',
+                        'Kalyani Nagar Residence',
+                        'Aundh Cottage',
+                        'Wakad Stay',
+                        'Pashan Garden Home',
+                        'Bund Garden Suite'
+                    ]
+                },
+                {
+                    city: 'Goa',
+                    lat: 15.2993,
+                    lng: 74.1240,
+                    names: [
+                        'Baga Beach Villa',
+                        'Calangute Cottage',
+                        'Anjuna House',
+                        'Palolem Retreat',
+                        'Vagator Guesthouse',
+                        'Candolim Flat',
+                        'Arambol Beach Home',
+                        'Colva Residence',
+                        'Panaji Studio',
+                        'Morjim Sea View'
+                    ]
+                }
+            ];
+            return cities.flatMap((city, cityIndex) =>
+                city.names.map((name, idx) => ({
+                    id: 50 + cityIndex * 10 + idx + 1,
+                    name,
+                    description: `Comfortable stay in ${city.city}, close to major attractions and local markets.`,
+                    lat: city.lat + 0.0006 * idx,
+                    lng: city.lng + 0.0005 * ((idx % 5) - 2),
+                    amount: 1800 + 150 * idx,
+                    rooms: 1 + (idx % 3),
+                    category: ['single bedroom', 'double bedroom', 'triple bedroom'][idx % 3],
+                    location: city.city
+                }))
+            );
+        })()
     ],
+
     touristPlaces: [
-        { id: 1, name: "Hollywood Sign", description: "Iconic landmark offering hiking trails.", lat: 34.1341, lng: -118.3215, amount: 1500, location: "Los Angeles" },
-        { id: 2, name: "Statue of Liberty", description: "Historical monument on Ellis Island.", lat: 40.6892, lng: -74.0445, amount: 1800, location: "New York" },
-        { id: 3, name: "Eiffel Tower", description: "Most-visited paid monument in the world.", lat: 48.8584, lng: 2.2945, amount: 2000, location: "Paris" },
-        { id: 4, name: "Louvre Museum", description: "World's largest art museum.", lat: 48.8606, lng: 2.3376, amount: 1200, location: "Paris" },
-        { id: 5, name: "Gateway of India", description: "Iconic arch monument built in the early 20th century.", lat: 18.922, lng: 72.834, amount: 1000, location: "Mumbai" },
-        { id: 6, name: "Siddhivinayak Temple", description: "Historic and popular Hindu temple dedicated to Lord Shri Ganesh.", lat: 19.0166, lng: 72.8306, amount: 1100, location: "Mumbai" },
-        { id: 7, name: "Marina Beach", description: "Longest natural urban beach in India.", lat: 13.05, lng: 80.2824, amount: 1500, location: "Chennai" },
-        { id: 8, name: "Kapaleeshwarar Temple", description: "Stunning Dravidian architecture temple.", lat: 13.0335, lng: 80.2706, amount: 1200, location: "Chennai" }
+        { id: 1, name: "Hollywood Sign", description: "Iconic landmark offering hiking trails.", lat: 34.0015, lng: -118.1985, amount: 1000, location: "Los Angeles" },
+        { id: 2, name: "Griffith Observatory", description: "Stargazing and city views from the observatory.", lat: 34.0030, lng: -118.1970, amount: 1100, location: "Los Angeles" },
+        { id: 3, name: "Santa Monica Pier", description: "Beach boardwalk with shops and rides.", lat: 34.0045, lng: -118.1955, amount: 1200, location: "Los Angeles" },
+        { id: 4, name: "Rodeo Drive", description: "Luxury shopping and designer boutiques.", lat: 34.0060, lng: -118.1940, amount: 1300, location: "Los Angeles" },
+        { id: 5, name: "Venice Beach Boardwalk", description: "Colorful characters and seaside skate park.", lat: 34.0075, lng: -118.1925, amount: 1400, location: "Los Angeles" },
+        { id: 6, name: "Getty Center", description: "Art museum with gardens and views.", lat: 34.0090, lng: -118.1910, amount: 1500, location: "Los Angeles" },
+        { id: 7, name: "Universal Studios Hollywood", description: "Theme park and studio tour experience.", lat: 34.0105, lng: -118.1895, amount: 1600, location: "Los Angeles" },
+        { id: 8, name: "The Broad Museum", description: "Contemporary art museum downtown.", lat: 34.0120, lng: -118.1880, amount: 1700, location: "Los Angeles" },
+        { id: 9, name: "Walt Disney Concert Hall", description: "Iconic Frank Gehry concert venue.", lat: 34.0135, lng: -118.1865, amount: 1800, location: "Los Angeles" },
+        { id: 10, name: "Natural History Museum", description: "Dinosaur fossils and cultural exhibits.", lat: 34.0150, lng: -118.1850, amount: 1900, location: "Los Angeles" },
+        { id: 11, name: "Statue of Liberty", description: "Historical monument on Ellis Island.", lat: 40.7015, lng: -73.9985, amount: 1000, location: "New York" },
+        { id: 12, name: "Central Park", description: "Vast green space for strolling or biking.", lat: 40.7030, lng: -73.9970, amount: 1100, location: "New York" },
+        { id: 13, name: "Times Square", description: "Bright lights and Broadway theatres.", lat: 40.7045, lng: -73.9955, amount: 1200, location: "New York" },
+        { id: 14, name: "Brooklyn Bridge", description: "Historic bridge with skyline views.", lat: 40.7060, lng: -73.9940, amount: 1300, location: "New York" },
+        { id: 15, name: "Metropolitan Museum of Art", description: "World-class art collection.", lat: 40.7075, lng: -73.9925, amount: 1400, location: "New York" },
+        { id: 16, name: "Empire State Building", description: "Iconic skyscraper observation decks.", lat: 40.7090, lng: -73.9910, amount: 1500, location: "New York" },
+        { id: 17, name: "High Line", description: "Elevated park built on a former rail line.", lat: 40.7105, lng: -73.9895, amount: 1600, location: "New York" },
+        { id: 18, name: "One World Observatory", description: "Panoramic views from the tallest NYC building.", lat: 40.7120, lng: -73.9880, amount: 1700, location: "New York" },
+        { id: 19, name: "Rockefeller Center", description: "Famous plaza with shops and ice rink.", lat: 40.7135, lng: -73.9865, amount: 1800, location: "New York" },
+        { id: 20, name: "Fifth Avenue", description: "High-end shopping and famous landmarks.", lat: 40.7150, lng: -73.9850, amount: 1900, location: "New York" },
+        { id: 21, name: "Eiffel Tower", description: "Most-visited paid monument in the world.", lat: 48.8515, lng: 2.3415, amount: 1000, location: "Paris" },
+        { id: 22, name: "Louvre Museum", description: "World's largest art museum.", lat: 48.8530, lng: 2.3430, amount: 1100, location: "Paris" },
+        { id: 23, name: "Notre-Dame Cathedral", description: "Historic cathedral on the Île de la Cité.", lat: 48.8545, lng: 2.3445, amount: 1200, location: "Paris" },
+        { id: 24, name: "Sacre-Cœur Basilica", description: "Hilltop basilica with city views.", lat: 48.8560, lng: 2.3460, amount: 1300, location: "Paris" },
+        { id: 25, name: "Arc de Triomphe", description: "Famous monument on the Champs-Élysées.", lat: 48.8575, lng: 2.3475, amount: 1400, location: "Paris" },
+        { id: 26, name: "Musée d'Orsay", description: "Impressionist masterpieces in a former station.", lat: 48.8590, lng: 2.3490, amount: 1500, location: "Paris" },
+        { id: 27, name: "Luxembourg Gardens", description: "Formal gardens around the Senate palace.", lat: 48.8605, lng: 2.3505, amount: 1600, location: "Paris" },
+        { id: 28, name: "Seine River Cruise", description: "Scenic city cruise on the Seine.", lat: 48.8620, lng: 2.3520, amount: 1700, location: "Paris" },
+        { id: 29, name: "Palace of Versailles", description: "Lavish royal palace just outside Paris.", lat: 48.8635, lng: 2.3535, amount: 1800, location: "Paris" },
+        { id: 30, name: "Le Marais", description: "Trendy district of galleries and cafes.", lat: 48.8650, lng: 2.3550, amount: 1900, location: "Paris" },
+        { id: 31, name: "Gateway of India", description: "Iconic arch monument built in the early 20th century.", lat: 19.0715, lng: 72.8815, amount: 1000, location: "Mumbai" },
+        { id: 32, name: "Siddhivinayak Temple", description: "Historic and popular Hindu temple dedicated to Lord Shri Ganesh.", lat: 19.0730, lng: 72.8830, amount: 1100, location: "Mumbai" },
+        { id: 33, name: "Marine Drive", description: "Scenic coastal promenade.", lat: 19.0745, lng: 72.8845, amount: 1200, location: "Mumbai" },
+        { id: 34, name: "Elephanta Caves", description: "Ancient rock-cut caves on an island.", lat: 19.0760, lng: 72.8860, amount: 1300, location: "Mumbai" },
+        { id: 35, name: "Chhatrapati Shivaji Terminus", description: "Gothic railway station and UNESCO site.", lat: 19.0775, lng: 72.8875, amount: 1400, location: "Mumbai" },
+        { id: 36, name: "Colaba Causeway", description: "Bustling market street for shopping.", lat: 19.0790, lng: 72.8890, amount: 1500, location: "Mumbai" },
+        { id: 37, name: "Haji Ali Dargah", description: "Sea shrine and pilgrimage site.", lat: 19.0805, lng: 72.8905, amount: 1600, location: "Mumbai" },
+        { id: 38, name: "Sanjay Gandhi National Park", description: "Urban park with wildlife and caves.", lat: 19.0820, lng: 72.8920, amount: 1700, location: "Mumbai" },
+        { id: 39, name: "Juhu Beach", description: "Popular beach with street food stalls.", lat: 19.0835, lng: 72.8935, amount: 1800, location: "Mumbai" },
+        { id: 40, name: "Bandra Bandstand", description: "Waterfront promenade with city skyline views.", lat: 19.0850, lng: 72.8950, amount: 1900, location: "Mumbai" },
+        { id: 41, name: "Marina Beach", description: "Longest natural urban beach in India.", lat: 13.0815, lng: 80.2715, amount: 1000, location: "Chennai" },
+        { id: 42, name: "Kapaleeshwarar Temple", description: "Stunning Dravidian architecture temple.", lat: 13.0830, lng: 80.2730, amount: 1100, location: "Chennai" },
+        { id: 43, name: "Fort St. George", description: "Historic fort and museum.", lat: 13.0845, lng: 80.2745, amount: 1200, location: "Chennai" },
+        { id: 44, name: "San Thome Basilica", description: "Gothic church built over St. Thomas tomb.", lat: 13.0860, lng: 80.2760, amount: 1300, location: "Chennai" },
+        { id: 45, name: "Mahabalipuram Temples", description: "Ancient rock-cut shore temples.", lat: 13.0875, lng: 80.2775, amount: 1400, location: "Chennai" },
+        { id: 46, name: "Guindy National Park", description: "Small urban wildlife sanctuary.", lat: 13.0890, lng: 80.2790, amount: 1500, location: "Chennai" },
+        { id: 47, name: "Elliot's Beach", description: "Calm seaside spot in Besant Nagar.", lat: 13.0905, lng: 80.2805, amount: 1600, location: "Chennai" },
+        { id: 48, name: "Vivekananda House", description: "Museum dedicated to Swami Vivekananda.", lat: 13.0920, lng: 80.2820, amount: 1700, location: "Chennai" },
+        { id: 49, name: "Cholamandal Artists' Village", description: "Art colony with galleries.", lat: 13.0935, lng: 80.2835, amount: 1800, location: "Chennai" },
+        { id: 50, name: "Kapaleeshwarar Market", description: "Vibrant market near the temple.", lat: 13.0950, lng: 80.2850, amount: 1900, location: "Chennai" },
+        ...(() => {
+            const cities = [
+                {
+                    city: 'Delhi',
+                    lat: 28.6139,
+                    lng: 77.2090,
+                    places: [
+                        'India Gate',
+                        'Qutub Minar',
+                        'Red Fort',
+                        'Lotus Temple',
+                        'Humayun\'s Tomb',
+                        'Akshardham Temple',
+                        'Jama Masjid',
+                        'Rajpath',
+                        'National Museum',
+                        'Bangla Sahib Gurudwara'
+                    ]
+                },
+                {
+                    city: 'Bangalore',
+                    lat: 12.9716,
+                    lng: 77.5946,
+                    places: [
+                        'Lalbagh Botanical Garden',
+                        'Bangalore Palace',
+                        'Cubbon Park',
+                        'Vidhana Soudha',
+                        'ISKCON Temple',
+                        'UB City',
+                        'National Gallery of Modern Art',
+                        'Commercial Street',
+                        'Wonderla Amusement Park',
+                        'Nandi Hills'
+                    ]
+                },
+                {
+                    city: 'Kolkata',
+                    lat: 22.5726,
+                    lng: 88.3639,
+                    places: [
+                        'Victoria Memorial',
+                        'Howrah Bridge',
+                        'Dakshineswar Temple',
+                        'Indian Museum',
+                        'Science City',
+                        'Prinsep Ghat',
+                        'St. Paul\'s Cathedral',
+                        'Marble Palace',
+                        'Kalighat Temple',
+                        'New Town Eco Park'
+                    ]
+                },
+                {
+                    city: 'Hyderabad',
+                    lat: 17.3850,
+                    lng: 78.4867,
+                    places: [
+                        'Charminar',
+                        'Golconda Fort',
+                        'Hussain Sagar',
+                        'Ramoji Film City',
+                        'Birla Mandir',
+                        'Chowmahalla Palace',
+                        'Qutb Shahi Tombs',
+                        'Nehru Zoological Park',
+                        'Salar Jung Museum',
+                        'Laad Bazaar'
+                    ]
+                },
+                {
+                    city: 'Jaipur',
+                    lat: 26.9124,
+                    lng: 75.7873,
+                    places: [
+                        'Hawa Mahal',
+                        'Amer Fort',
+                        'City Palace',
+                        'Jantar Mantar',
+                        'Nahargarh Fort',
+                        'Jaigarh Fort',
+                        'Albert Hall Museum',
+                        'Jal Mahal',
+                        'Central Park',
+                        'Birla Temple'
+                    ]
+                },
+                {
+                    city: 'Ahmedabad',
+                    lat: 23.0225,
+                    lng: 72.5714,
+                    places: [
+                        'Sabarmati Ashram',
+                        'Kankaria Lake',
+                        'Adalaj Stepwell',
+                        'Akshardham Temple',
+                        'Jama Masjid',
+                        'Sidi Saiyyed Mosque',
+                        'Calico Museum',
+                        'Science City',
+                        'Heritage Walk',
+                        'Vastrapur Lake'
+                    ]
+                },
+                {
+                    city: 'Pune',
+                    lat: 18.5204,
+                    lng: 73.8567,
+                    places: [
+                        'Shaniwar Wada',
+                        'Aga Khan Palace',
+                        'Sinhagad Fort',
+                        'Dagdusheth Ganpati',
+                        'Osho Ashram',
+                        'Raja Dinkar Kelkar Museum',
+                        'Rambaug',
+                        'Khadakwasla Lake',
+                        'Parvati Hill',
+                        'Pune Okayama Friendship Garden'
+                    ]
+                },
+                {
+                    city: 'Goa',
+                    lat: 15.2993,
+                    lng: 74.1240,
+                    places: [
+                        'Baga Beach',
+                        'Calangute Beach',
+                        'Anjuna Flea Market',
+                        'Fort Aguada',
+                        'Dudhsagar Falls',
+                        'Se Cathedral',
+                        'Chapora Fort',
+                        'Basilica of Bom Jesus',
+                        'River Cruise',
+                        'Tito\'s Lane'
+                    ]
+                }
+            ];
+            return cities.flatMap((city, cityIndex) =>
+                city.places.map((name, idx) => ({
+                    id: 50 + cityIndex * 10 + idx + 1,
+                    name,
+                    description: `Popular ${city.city} attraction with local culture and great photo spots.`,
+                    lat: city.lat + 0.0007 * idx,
+                    lng: city.lng + 0.0004 * ((idx % 5) - 2),
+                    amount: 1000 + 100 * idx,
+                    location: city.city
+                }))
+            );
+        })()
     ],
+
     guides: [
         { id: 1, name: "Ravi Shankar", qualification: "History MA", experience: "5 Years", amount: 1500, contact: "+91-9876543210", location: "Mumbai" },
         { id: 2, name: "Antoine Dupont", qualification: "Tourism Degree", experience: "8 Years", amount: 2200, contact: "+33-612345678", location: "Paris" },
@@ -122,6 +512,10 @@ export const mockData = {
         { id: 100, name: "Amitabh Singh", qualification: "North Indian Culture", experience: "10 Years", amount: 2200, contact: "+91-9876543226", location: "Lucknow" },
         { id: 101, name: "Gabriela Lopez", qualification: "Peruvian History MA", experience: "6 Years", amount: 1750, contact: "+51-1123456789", location: "Cusco" },
         { id: 102, name: "Omar Al-Rashid", qualification: "Jordanian Archaeology", experience: "8 Years", amount: 1950, contact: "+962-61234568", location: "Petra" },
-        { id: 103, name: "Natalia Romanova", qualification: "Russian Ballet History", experience: "7 Years", amount: 1800, contact: "+7-4955678901", location: "Moscow" }
+        { id: 103, name: "Natalia Romanova", qualification: "Russian Ballet History", experience: "7 Years", amount: 1800, contact: "+7-4955678901", location: "Moscow" },
+    ],
+    users: [
+        { id: 1, username: 'admin', email: 'admin@example.com', password: 'admin123', role: 'admin' },
+        { id: 2, username: 'tourist', email: 'user@example.com', password: 'user123', role: 'user' }
     ]
 };

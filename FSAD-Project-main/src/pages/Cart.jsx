@@ -24,12 +24,11 @@ export default function Cart() {
         setPaymentItem({ item: cartItem, type: 'cart' });
     };
 
-    const handlePaymentSuccess = (item, type, amount) => {
-        // Add bookings for all cart items
+    const handlePaymentSuccess = () => {
         cart.forEach(cartItem => {
             addBooking(cartItem.id.split('-')[1], cartItem.type, cartItem.amount);
         });
-        alert(`Payment Successful! Your cart items have been booked.`);
+        alert('Payment Successful! Your cart items have been booked.');
         clearCart();
         setPaymentItem(null);
         navigate('/');

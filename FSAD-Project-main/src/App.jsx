@@ -1,18 +1,18 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AppProvider } from './context/AppContext';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Search from './pages/Search';
-import Maps from './pages/Maps';
-import AddHomestay from './pages/AddHomestay';
-import Guides from './pages/Guides';
-import BecomeGuide from './pages/BecomeGuide';
-import AdminPortal from './pages/AdminPortal';
-import UserPortal from './pages/UserPortal';
-import Auth from './pages/Auth';
-import GuidePortal from './pages/GuidePortal';
-import Cart from './pages/Cart';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { AppProvider } from './context/AppProvider'
+import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Search from './pages/Search'
+import Maps from './pages/Maps'
+import AddHomestay from './pages/AddHomestay'
+import Guides from './pages/Guides'
+import BecomeGuide from './pages/BecomeGuide'
+import AdminPortal from './pages/AdminPortal'
+import UserPortal from './pages/UserPortal'
+import Auth from './pages/Auth'
+import GuidePortal from './pages/GuidePortal'
+import Cart from './pages/Cart'
 
 function App() {
   return (
