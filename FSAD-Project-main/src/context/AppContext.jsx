@@ -118,9 +118,9 @@ export const AppProvider = ({ children }) => {
         return null;
     };
 
-    const loginUser = async (email, password) => {
+    const loginUser = async (identifier, password) => {
         try {
-            const response = await axios.post('/api/auth/login', { email, password });
+            const response = await axios.post('/api/auth/login', { identifier, password });
             const data = response.data;
             if (data.success) {
                 setCurrentUser(data.user);

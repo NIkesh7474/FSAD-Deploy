@@ -67,6 +67,11 @@ APIs:
 Google Maps API for location and distance
 Payment gateway API for bookings
 
+MySQL persistence:
+- Create a `.env` file in the project root matching `.env.example`.
+- Set `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME`.
+- Run `npm install` and then `npm run dev`.
+
 System Flow:
 
 The tourist registers and logs into the platform. The tourist searches for a homestay in a specific location. The system displays available homestays along with nearby attractions. The tourist selects a homestay and sends a booking request. The host receives the request and confirms it. The tourist can view local recommendations provided by guides. After the stay the tourist gives feedback.

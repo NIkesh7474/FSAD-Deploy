@@ -18,17 +18,20 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> request) {
-        String email = request.get("email");
+        String identifier = request.get("identifier");
         String password = request.get("password");
-        Optional<User> user = repository.findByEmailAndPassword(email, password);
-        
+        Optional<User> user = repository.findByEmailAndPassword(identifier, password);
+        if (!user.isPresent()) {
+            user = repository.findByNameAndPassword(identifier, password);
+        }
+
         Map<String, Object> response = new HashMap<>();
         if (user.isPresent()) {
             response.put("success", true);
             response.put("user", user.get());
         } else {
             response.put("success", false);
-            response.put("message", "Invalid credentials");
+            response.put("message", "Invalid username/email or password");
         }
         return ResponseEntity.ok(response);
     }
